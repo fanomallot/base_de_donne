@@ -1,0 +1,25 @@
+ouvrerture du donné
+sqlite3 chinook.db
+#récuperation de tous les albums
+select *from albums;
+#récuperation de tous les albums dont le titre contient "Great"
+SELECT * FROM albums
+WHERE Title LIKE '%Great%';
+#Donner le nombre total d'albums contenus dans la base (sans regarder les id bien sûr)
+SELECT COUNT (*) FROM albums;
+#Supprimer tous les albums dont le nom contient "music"
+DELETE FROM albums WHERE Title LIKE '%music%';
+#Récupérer tous les albums écrits par AC/DC
+SELECT * FROM albums
+WHERE ArtistId LIKE '1';
+#Récupérer tous les albums écrits par AC/DC
+SELECT Title FROM albums
+WHERE ArtistId LIKE '1';
+#Récupérer la liste des titres de l'album "Let There Be Rock"
+SELECT * FROM albums
+WHERE Title = 'Let There Be Rock';
+#Afficher le prix de cet album ainsi que sa durée totale
+select tracks.TrackId , albums.Title , tracks.UnitPrice , tracks.Milliseconds
+from tracks
+join albums on albums.AlbumId = tracks.TrackId
+where albums.Title = 'Let There Be Rock';

@@ -1,0 +1,24 @@
+CREATE TABLE 'user'(
+'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+'name' TEXT );
+CREATE TABLE 'lien'(
+'id' INTEGER PRIMARY KEY AUTOINCREMENT ,
+'user_id' INTEGER,
+'url' TEXT,
+FOREIGN KEY (user_id) REFERENCE user(id)
+);
+CREATE TABLE 'comment'(
+'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+'user_id' INTEGER,
+'lien_id' INTEGER,
+'comms_id' INTEGER,
+'coms' TEXT,
+FOREIGN KEY (user_id) REFERENCE user(id),
+FOREIGN KEY (lien_id) REFERENCE lien(id),
+FOREIGN KEY (comms_id) REFERENCE commentcomments(id)
+);
+CREATE TABLE 'commentcomments'(
+'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+'user_id' INTEGER,
+'comms' TEXT,
+FOREIGN KEY (user_id) REFERENCE user(id));
